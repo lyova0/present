@@ -17,7 +17,7 @@ const audio = $("#audio");
 let audioReady = false;
 
 function escapeHTML(value) {
-    return String(value ?? "").replace(/[&<>"']/g, char => ({
+    return String(value ? ? "").replace(/[&<>"']/g, char => ({
         "&": "&amp;",
         "<": "&lt;",
         ">": "&gt;",
@@ -137,16 +137,24 @@ function getYouTubeId(url) {
 
 
 function prepareMusic() {
-
-  const url = String(GIFT.musicUrl || "").trim();
-
-  const youtubeId = getYouTubeId(url);
-
-  const youtubePlayer = document.querySelector("#youtubePlayer");
-  const audioPlayer = document.querySelector("#audioPlayer");
-
+  
   document.querySelector("#songName").textContent =
     GIFT.songTitle || "Մեր երգը";
+
+    const url = String(GIFT.musicUrl || "").trim();
+    const youtubeId = getYouTubeId(url);
+
+    const youtubePlayer =
+        document.querySelector("#youtubePlayer");
+
+    const audioPlayer =
+        document.querySelector("#audioPlayer");
+
+    // Եթե YouTube player-ն արդեն ստեղծված է,
+    // երկրորդ անգամ չենք ստեղծում
+    if (youtubePlayer.querySelector("iframe")) {
+        return;
+    }
 
 
   // Եթե հղում չկա
