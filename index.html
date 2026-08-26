@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="hy">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HeartStory — Քո նվերը ❤️</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Armenian:wght@400;500;600;700;800&family=Noto+Serif+Armenian:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="ambient ambient-1"></div>
+    <div class="ambient ambient-2"></div>
+
+    <main id="app">
+
+        <!-- 1. LOVE QUESTION -->
+        <section class="screen active" id="screen-question">
+            <div class="bunny-wrap">
+                <img class="character" src="assets/gifs/bunny-love.gif" alt="" onerror="this.style.display='none';document.querySelector('.character-fallback').style.display='block'">
+                <div class="character-fallback">ᕱ⑅ᕱ<br><span>♡</span></div>
+            </div>
+
+            <div class="tiny-label">ՓՈՔՐԻԿ ՀԱՐՑ ՔԵԶ</div>
+            <h1>Սիրո՞ւմ ես ինձ,<br><em data-recipient>Աննա</em>։</h1>
+            <p class="subtext">Պատասխանիր անկեղծ։ ❤️</p>
+
+            <div class="question-buttons">
+                <button id="yesBtn" class="yes-btn">Այո ❤️</button>
+                <button id="noBtn" class="no-btn">Ոչ</button>
+            </div>
+
+            <p id="noMessage" class="no-message"></p>
+        </section>
+
+        <!-- 2. WELCOME / NEXT -->
+        <section class="screen" id="screen-welcome">
+            <div class="bunny-wrap small">
+                <img class="character" src="assets/gifs/bunny-happy.gif" alt="" onerror="this.style.display='none';document.querySelector('.character-fallback-2').style.display='block'">
+                <div class="character-fallback character-fallback-2">ᕱ⑅ᕱ<br><span>♥</span></div>
+            </div>
+            <div class="tiny-label">ԼԱՎ, ՍԿՍԵՆՔ ❤️</div>
+            <h1>Ես մի փոքրիկ<br><em>բան ունեմ քեզ համար</em>։</h1>
+            <p class="subtext">Սա մեր փոքրիկ պատմությունն է։</p>
+            <button class="main-btn" data-next="memories">Բացել նվերը →</button>
+        </section>
+
+        <!-- 3. MEMORIES -->
+        <section class="screen screen-wide" id="screen-memories">
+            <div class="tiny-label">ՄԵՐ ՀԻՇՈՂՈՒԹՅՈՒՆՆԵՐԸ</div>
+            <h2>Փոքրիկ պահեր,<br><em>որ ուզում եմ պահել</em>։</h2>
+            <p class="subtext" id="memoryIntro"></p>
+
+            <div class="memory-wall" id="memoryWall"></div>
+
+            <button class="main-btn" data-next="music">Հաջորդը →</button>
+        </section>
+
+        <!-- 4. MUSIC -->
+        <section class="screen" id="screen-music">
+            <div class="music-art">
+                <div class="vinyl"><span>♥</span></div>
+                <div class="music-spark s1">♪</div>
+                <div class="music-spark s2">♫</div>
+            </div>
+
+            <div class="tiny-label">ՄԵՐ ԵՐԳԸ</div>
+            <h2 id="songTitle">Մի երգ՝ քեզ համար</h2>
+            <p class="subtext" id="songDescription"></p>
+
+            <div class="youtube-player-card">
+
+                <!-- YouTube player-ը կհայտնվի այստեղ -->
+                <div id="youtubePlayer"></div>
+
+                <!-- Եթե երբևէ MP3 օգտագործես, սա նույնպես կաշխատի -->
+                <div id="audioPlayer" class="player" hidden>
+
+                    <button id="playBtn" class="play-btn">▶</button>
+
+                    <div class="player-info">
+
+                        <strong id="songName">Մեր երգը</strong>
+
+                        <div class="progress-track">
+                            <div id="audioProgress"></div>
+                        </div>
+
+                        <div class="time-row">
+                            <span id="currentTime">0:00</span>
+                            <span id="duration">0:00</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <audio id="audio" preload="metadata"></audio>
+            <p id="musicError" class="error-message"></p>
+
+            <button class="main-btn" data-next="letter">Կարդալ նամակը →</button>
+        </section>
+
+        <!-- 5. LETTER -->
+        <section class="screen" id="screen-letter">
+            <div class="letter-envelope">✉</div>
+            <div class="tiny-label">Մի ՆԱՄԱԿ՝ ՍՐՏԻՑ</div>
+            <div class="letter-card">
+                <div class="letter-date" id="letterDate"></div>
+                <h2 id="letterTitle">Մի բան, որ ուզում եմ ասել քեզ</h2>
+                <div class="letter-body" id="letterBody"></div>
+                <div class="letter-sign">Սիրով՝ <span data-sender>Լյովա</span> ♥</div>
+            </div>
+            <button class="main-btn" data-next="final">Վերջին էջը →</button>
+        </section>
+
+        <!-- 6. FINAL -->
+        <section class="screen" id="screen-final">
+            <div class="final-heart">♥</div>
+            <div class="tiny-label">THE END · ԲԱՅՑ ՈՉ ԻՐԱԿԱՆՈՒՄ</div>
+            <h1>Սա մեր<br><em>պատմությունն է</em>։</h1>
+            <p class="final-message" id="finalMessage"></p>
+            <div class="signature">Սիրով՝ <span data-sender>Լյովա</span></div>
+            <button class="restart-btn" id="replayBtn">↻ Դիտել նորից</button>
+        </section>
+
+    </main>
+
+    <div class="music-floating" id="floatingMusic">
+        <button id="floatingPlay">▶</button>
+        <span id="floatingSong">♫</span>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
