@@ -52,6 +52,26 @@ const GIFT = {
         {
             src: "assets/images/photo4.jpg",
             caption: "Մեր պատմության ևս մեկ էջ"
+        },
+        {
+            src: "assets/images/photo5.jpg",
+            caption: "Մեր պատմության ևս մեկ էջ"
+        },
+        {
+            src: "assets/images/photo6.jpg",
+            caption: "Մեր պատմության ևս մեկ էջ"
+        },
+        {
+            src: "assets/images/photo7.jpg",
+            caption: "Մեր պատմության ևս մեկ էջ"
+        },
+        {
+            src: "assets/images/photo8.jpg",
+            caption: "Մեր պատմության ևս մեկ էջ"
+        },
+        {
+            src: "assets/images/photo9.jpg",
+            caption: "Մեր պատմության ևս մեկ էջ"
         }
     ],
 
